@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\OctTree1.cs" />
+     <Compile Include="Assets\Scripts\TestOctTree1.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity532/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
