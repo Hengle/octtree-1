@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\DebugDrawOctTree.cs" />
      <Compile Include="Assets\Scripts\OctTree1.cs" />
      <Compile Include="Assets\Scripts\TestOctTree1.cs" />
  <Reference Include="UnityEngine.UI">

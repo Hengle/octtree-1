@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OctTree1
 {
@@ -41,6 +42,7 @@ namespace OctTree1
         public void Insert(Vector3 pos, object obj)
         {
             int subNodesIndex = GetSubNodesIndex(pos);
+            //Debug.Log("subNodesIndex "+ subNodesIndex);
             var cell = SubNodes[subNodesIndex];
             if(cell == null)
             {
@@ -60,18 +62,27 @@ namespace OctTree1
             }
         }
 
+        public string Log(string tab = "")
+        {
+            return tab + " Bounds(" + Bounds.ToString("F4") + ") Center(" + Center.ToString("F4") + ") Data("
+                + SubNodes.Where(sn => sn is KeyValuePair<Vector3, object>).Cast<KeyValuePair<Vector3, object>>()
+                .Aggregate("", (ac, pair) => ac + "(pos:" + pair.Key.ToString("F4") + " val:" + pair.Value+") ") + ")\n"
+                + SubNodes.Where(sn => sn is OctNode).Cast<OctNode>()
+                .Aggregate("", (ac, node) => ac + node.Log(tab+"-"));
+        }
+
         public int GetSubNodesIndex(Vector3 pos)
         {
             int index = 0;
-            if(Center.x >= pos.x)
+            if (pos.y >= Center.y)
             {
                 index += 1;
             }
-            if(Center.y >= pos.y)
+            if (pos.x >= Center.x)
             {
                 index += 2;
             }
-            if(Center.z >= pos.z)
+            if(pos.z >= Center.z)
             {
                 index += 4;
             }

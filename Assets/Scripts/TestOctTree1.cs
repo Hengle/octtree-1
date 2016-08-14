@@ -33,6 +33,12 @@ public class TestOctTree1 : MonoBehaviour
         Debug.Log(Vector3Helper.MedianPoint(new Vector3(1, 1, 1), new Vector3(2, 2, 2)));
         Debug.Log(Vector3Helper.MedianPoint(new Vector3(0, 0, 1), new Vector3(0, 0, 2)));
         Debug.Log("------------------");
+        OctNode node = new OctNode { Center = Vector3.zero, Bounds = new Bounds(Vector3.zero, Vector3.one) };
+        node.Insert(new Vector3(0.25f, 0.25f, 0.25f), "test1");
+        node.Insert(new Vector3(0.35f, 0.35f, 0.35f), "test2");
+        node.Insert(new Vector3(-0.25f, -0.25f, -0.25f), "test3");
+        node.Insert(new Vector3(-0.4f, -0.4f, -0.4f), "test4");
+        Debug.Log(node.Log());
     }
 
 }
